@@ -1,6 +1,6 @@
 import React from 'react';
-import Logo from './ui/Logo';  // Your existing Logo component
-import Icon from './ui/Icon';  // The new Icon component
+import Logo from './ui/Logo';  
+import Icon from './ui/Icon';  
 import './App.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
           <Icon height={50} width={50} />
         </div>
         <div className="LogoContainer">
-          <Logo height={100} width={100} />  {/* Your Logo component */}
+          <Logo height={100} width={100} />  { }
         </div>
       </div>
       <h1>Welcome to LangCon</h1>
