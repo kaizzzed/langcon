@@ -3,7 +3,11 @@ html, body {
   padding: 0;
   height: 100%;
   background-color: #whitesmoke;
+<<<<<<< HEAD
   font-family: 'Courier New', Courier, monospace, sans-serif;
+=======
+  font-family: 'Courier New', Courier, monospace;
+>>>>>>> 73867ac14c4fd7b8da39214de433f105caa86dc4
   display: flex;
   flex-direction: column;
   align-items: center;
