@@ -42,7 +42,5 @@ async function main() {
   
     const buffer = Buffer.from(await mp3.arrayBuffer());
     await fs.promises.writeFile(speechFile, buffer);
-  
-    console.log("Speech file saved at: ${speechFile}");
-  }
+    }
 main()
