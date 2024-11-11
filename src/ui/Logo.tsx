@@ -1,4 +1,4 @@
-import LangConv from '../assets/images/langconv.png';
+import LangConv from '../assets/images/name.svg';
 type LogoProps = {
   height: number;
   width: number;
