@@ -11,7 +11,7 @@ function App() {
           <Icon height={50} width={50}/>
         </div>
         <div className="LogoContainer">
-          <Logo height={40} width={90}/> 
+          <Logo height={30} width={100}/> 
         </div>
       </div>
       <p>Text goes here...</p>

@@ -1,4 +1,4 @@
-import LogoIcon from '../assets/images/LogoIcon.svg';
+import LogoIcon from '../assets/images/NewLogo.svg';
 
 type LogoProps = {
   height: number;
