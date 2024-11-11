@@ -1,6 +1,5 @@
 html, body {
-  margin: 20px;
-  padding: 10px;
+  margin: 0;
   height: 100%;
   background-color: #whitesmoke;
   font-family: 'Courier New', Courier, monospace;
@@ -20,13 +19,13 @@ html, body {
 
 .IconContainer{
   position: absolute;
-  top: 10px;
-  left: 0;
+  margin-top: 5px;
+  left: 20px
 }
 
 .LogoContainer{
-  position: absolute;
-  top: 20px;
+  margin-top:20px;
+  left: 4em;
 }
 
 p {
