@@ -19,7 +19,7 @@ function App() {
         <Logo height={30} width={100}/>
         </div>
       </div>
-      <ResponseBox onSubmit={handleResponseSubmit} /> {/* Add ResponseBox here */}
+      <ResponseBox onSubmit={handleResponseSubmit} />
     </div>
   );
 }
