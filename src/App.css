@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   height: 100%;
   background-color: #whitesmoke;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Karla', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,12 +19,11 @@ html, body {
 
 .IconContainer{
   position: absolute;
-  margin-top: 5px;
   left: 20px
 }
 
 .LogoContainer{
-  margin-top:20px;
+  margin-top:30px;
   left: 4em;
 }
 
@@ -34,5 +33,6 @@ p {
 
 .header {
   display: flex;
-  flex-direction: row;  
+  flex-direction: row; 
+  align-items: baseline; 
 }

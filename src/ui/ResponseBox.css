@@ -1,0 +1,45 @@
+.scenario-input {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* puts button and textarea vertically */
+    position: relative;
+}
+
+.scenario-input label {
+    display: block;  
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top:80px;
+}
+
+.scenario-input textarea {
+    width: 600px;
+    height: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.scenario-input button {
+    bottom: -40px;
+    width: 80px;
+    right: 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: white;
+    color: #333;
+    border: 2px #ddd;
+    border-radius: 12px; 
+    position: absolute; 
+}
+
+.scenario-input button:hover {
+    background-color: #e0e0e0;
+}
+
+input, label, textarea, button {
+    font-family: 'Karla', sans-serif;
+}
