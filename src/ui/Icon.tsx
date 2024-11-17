@@ -21,7 +21,7 @@ export default function Icon(props: LogoProps) {
         src={LogoIcon}
         height={props.height}
         width={props.width}
-        alt="LangConv Logo"
+        alt="Globe Icon"
       />
     </button>
   );

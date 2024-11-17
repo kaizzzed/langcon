@@ -1,8 +1,9 @@
 html, body {
   margin: 0;
+  padding: 0;
   height: 100%;
-  background-color: #whitesmoke;
-  font-family: 'Karla', sans-serif;
+  background-color: whitesmoke;
+  font-family: 'Courier New', Courier, monospace;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,15 +18,15 @@ html, body {
   width: 100%;
 }
 
-
 .IconContainer{
   position: absolute;
-  left: 20px
+  top: 10px;
+  left: 0;
 }
 
 .LogoContainer{
-  margin-top:30px;
-  left: 4em;
+  position: absolute;
+  top: 10px;
 }
 
 p {
@@ -34,6 +35,29 @@ p {
 
 .header {
   display: flex;
-  flex-direction: row; 
-  align-items: baseline; 
+  flex-direction: row;  
+}
+
+/* all stuff to do with the globe dropdown for languages */
+
+.language-dropdown {
+  position: absolute;
+  top: 64px;
+  left: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.language-dropdown button {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.language-dropdown button:not(:nth-child(3)) {
+  border-bottom: 1px solid black;
 }
