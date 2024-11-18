@@ -1,3 +1,7 @@
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -18,32 +22,25 @@ html, body {
   width: 100%;
 }
 
-.IconContainer{
-  position: absolute;
-  top: 10px;
-  left: 0;
-}
-
-.LogoContainer{
-  position: absolute;
-  top: 10px;
-}
-
 p {
   margin-top: 100px;
 }
 
 .header {
+  width: 100vw;
   display: flex;
-  flex-direction: row;  
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }
 
 /* all stuff to do with the globe dropdown for languages */
 
 .language-dropdown {
   position: absolute;
-  top: 64px;
-  left: 10px;
+  top: 70px; /* adjust here to move the dropdown box */
+  left: 15px; /* adjust here to move the dropdown box */
   border: 1px solid black;
   border-radius: 10px;
   padding: 5px;
@@ -60,4 +57,82 @@ p {
 
 .language-dropdown button:not(:nth-child(3)) {
   border-bottom: 1px solid black;
+}
+
+/* css for EnterLanguageDropdown */
+
+/* container for the dropdown */
+.enter-language-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* styling for the dropdown button */
+.enter-language-button {
+  width: 100%;
+  background-color: transparent;
+  color: black;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* container for the dropdown content */
+.enter-language-dropdown-content {
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* styles for the search input inside the dropdown */
+#enterLangInput {
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 14px 20px 12px 20px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+
+/* focus style for the search input */
+#enterLangInput:focus {
+  outline: 3px solid #ddd;
+}
+
+/* styles for each dropdown option */
+.enter-language-dropdown-option {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+/* hover style for dropdown options */
+.enter-language-dropdown-option:hover {
+  background-color: #ddd;
+}
+
+/* overall flex */
+.center-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 10px;
 }

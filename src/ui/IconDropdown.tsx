@@ -1,5 +1,3 @@
-import LogoIcon from '../assets/images/logo.svg';
-
 type LogoProps = {
     setLanguage: Function;
 };
@@ -13,4 +11,3 @@ export default function IconDropdown(props: LogoProps) {
     </div>
   );
 }
-
