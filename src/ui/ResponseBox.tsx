@@ -1,38 +1,35 @@
 import React, { useState } from 'react';
 import './ResponseBox.css';
 import { t } from '../languageUtils';
+import BeginButton from './BeginButton'; // import BeginButton component
 
 type ResponseBoxProps = {
-  onSubmit: (response: string) => void; //take string input and doens't return an output
+  onSubmit: (response: string) => void; // takes string input and doesn't return an output
   language: string;
 };
 
-function ResponseBox({ onSubmit, language }: ResponseBoxProps) { //passes the prop from ResponseBoxProps
-  const [response, setResponse] = useState<string>("");//store what user types
+function ResponseBox({ onSubmit, language }: ResponseBoxProps) { // passes the prop from ResponseBoxProps
+  const [response, setResponse] = useState<string>(""); // store what user types
 
-  const handleSubmit = (e: React.FormEvent) => { //function will run when begin button clicked
-    e.preventDefault();//stops page refresh
-    if (response.trim()) { //remove spaces at start/end + if empty, not run
-      onSubmit(response);
+  const handleSubmit = () => { // function will run when Begin button clicked
+    if (response.trim()) { // remove spaces at start/end + if empty, not run
+      onSubmit(response); // call onSubmit to handle the response
       setResponse(""); // after input, clears box
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="scenario-input">
+    <div className="scenario-input">
       <label htmlFor="response">{t(language, "enterScenario")}</label>
       <textarea
-        id="response" //label
-        value={response} //show input in box
-        onChange={(e) => setResponse(e.target.value)} //runs when user types input
+        id="response" // label
+        value={response} // show input in box
+        onChange={(e) => setResponse(e.target.value)} // runs when user types input
         placeholder={t(language, "enterYourScenarioHere")}
-      /> 
-      <button type="submit">{t(language, "begin")}</button> 
-    </form>//calls onSubmit
-  ); 
+      />
+      <BeginButton onClick={handleSubmit} /> {/* pass handleSubmit directly */}
+    </div>
+  );
 }
-/*htmlFor = "response" links label to input with id = "response"
-className on the <form> links the css
-*/
 
 export default ResponseBox;

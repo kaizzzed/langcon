@@ -1,0 +1,21 @@
+.begin-button {
+    bottom: -40px;
+    width: 80px;
+    right: 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: white;
+    color: #333;
+    border: 2px #ddd;
+    border-radius: 12px;
+    position: absolute;
+  }
+  
+  .begin-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  input, label, textarea, button {
+    font-family: 'Karla', sans-serif;
+  }
+  

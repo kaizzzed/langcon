@@ -136,3 +136,90 @@ p {
   gap: 30px;
   margin-top: 10px;
 }
+/*grid for speaker and microphone */
+.speak-grid-container {
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); /*3 equal columns */
+  gap: 20px; 
+  padding: 20px; 
+  grid-template-rows: auto; /* adjust row heights based on content */
+}
+
+/*style individual grid items */
+.speak-grid-item {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.speak-grid-container .speak-grid-item:nth-child(1) {
+  background-color: lightblue;
+  color: darkblue;
+}
+
+.speak-grid-container .speak-grid-item:nth-child(2) {
+  background-color: lightgreen;
+  color: darkgreen;
+}
+
+.speak-grid-container .speak-grid-item:nth-child(3) {
+  background-color: lightcoral;
+  color: darkred;
+}
+
+/*.container { /* holds grid 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns 
+  grid-template-rows: repeat(2, 150px); /* 2 rows same height 
+  gap: 10px; /* space between grid 
+} 
+/* for each grid item */
+.item {
+  border: 1px solid #000;
+  padding: 20px;
+  text-align: center;
+  background-color: whitesmoke;
+  
+}
+/* container for user input section */
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /*2 columns for input fields */
+  gap: 60px;
+  max-width: 100%; 
+  max-height: 2%;
+  margin-top: 5px;
+  margin-bottom: 30px; 
+  justify-items: legacy; 
+  flex-wrap: wrap; /*do not stack vertically*/
+}
+/* for each input grid item */
+.input-grid-item {
+  width: 30%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: right;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #000; 
+  border-radius: 10px; /* rounded corners */
+  text-align: center; /* align text inside the inputs */
+  margin-bottom: 15px; /* Space between items */
+}
+
+/* Styling for the input fields */
+.input-grid input {
+  width: 100%; 
+  padding: 5px;
+  font-size: 13px;
+  border: 100px; 
+  border-radius: 10px; /* rounded corners */
+  background-color: transparent; 
+  color: black; /* text color */
+  text-align: left; /* align text to the left  */
+  box-sizing: border-box; 
+}
+
+/* Styling for the container of the input fields (same as .enter-language-button styling) */
+

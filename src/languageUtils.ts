@@ -2,7 +2,6 @@ export function t(language: any, key: keyof typeof content.english): string{
     // @ts-ignore
     return content[language][key];
 }
-
 const content = {
     english: {
         enterScenario: "ENTER SCENARIO",
