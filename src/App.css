@@ -22,24 +22,16 @@ body {
   width: 100%;
 }
 
-p {
-  margin-top: 100px;
-}
-
 .header{
-  width: 100vw;
+  width: 98vw;
   display: flex;
   flex-direction: row;
   /*background-color: rgb(179, 182, 182);*/
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   border-bottom: 2px solid black;
-}
-.FAQ {
-  stroke-width: 100px;  
-  stroke: black;  
 }
 /* all stuff to do with the globe dropdown for languages */
 
@@ -145,23 +137,6 @@ p {
   padding:20px;
   margin-top: 10px;
 }
-/*grid for speaker and microphone */
-.speak-grid-container {
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr); /*2 equal columns */
-  gap: 25%; 
-  padding-inline: 0px; 
-  padding-top: 20px;
-  width: 100%;
-  align-items: center;
-  grid-template-rows: auto; /* adjust row heights based on content */
-}
-.speak-grid-container .speak-grid-item:nth-child(1) {
-  justify-self: end;
-}
-.speak-grid-container .speak-grid-item:nth-child(2) {
-  justify-self: end;
-}
 /* container for user input section */
 .input-grid {
   display: grid; 
@@ -170,7 +145,7 @@ p {
   gap: 4px; 
   width: 100%; 
   max-height: 50px;
-  margin-top: 0;
+  margin-top:-25px;
   margin-bottom: 20px; 
   grid-template-rows: auto; /* adjust row heights based on content */
   justify-items: center; 
@@ -191,7 +166,7 @@ p {
 /* styling for the text from user input */
 .input-grid input {
   width: 100%; 
-  padding: 5px;
+  padding: 15px;
   font-size: 13px;
   border: 100px; 
   border-radius: 10px; /* rounded corners */
@@ -201,6 +176,9 @@ p {
   text-align: left; /* align text to the left  */
   box-sizing: border-box; 
 }
+/*.input-grid .input-grid-item:nth-child(5) {
+}
+*/
 .input-container label {
   display: block;  
   font-weight: 700;
@@ -208,6 +186,25 @@ p {
   margin-bottom: 5px;
   font-size:12px;
   border-bottom: 1px solid black;
+}
+
+/*grid for speaker and microphone */
+.speak-grid-container {
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); /*2 equal columns */
+  gap: 25%; 
+  padding-inline: 0px; 
+  padding-top: 20px;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+  grid-template-rows: auto; /* adjust row heights based on content */
+}
+.speak-grid-container .speak-grid-item:nth-child(1) {
+  justify-self: end;
+}
+.speak-grid-container .speak-grid-item:nth-child(2) {
+  justify-self: end;
 }
 
 

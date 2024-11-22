@@ -84,18 +84,17 @@ function App() {
                 <div className="input-grid-item">
                   <BeginButton onClick={() => console.log('Begin button clicked!')} />
                 </div>
+                
               </div>
 
               <div className="speak-grid-container">
                 <div className="speak-grid-item">
-                  <Microphone height={40} width={40} />
+                  <Microphone height={50} width={50} />
                 </div>
-                  <Speaker height={40} width={40} />
+                  <Speaker height={50} width={50} />
                 <div className="speak-grid-item">
-                  
                 </div>
               </div>
-
             </div>
           </>
         )

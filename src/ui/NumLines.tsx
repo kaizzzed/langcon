@@ -23,10 +23,11 @@ const NumLines: React.FC = () => {
         id="num-lines"
         type="number"//onl accept numbers
         value={numLines}//value of input
+        placeholder="e.g. 5"
         onChange={handleInputChange}//handles change
         style={{
           borderColor: isInvalid ? "red" : "", // red border around input box for invalid inputs
-          borderWidth: "2px",
+          borderWidth: "1px",
         }}
       />
     </div>
