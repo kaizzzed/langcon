@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+///import React, { useState } from 'react';
+import React, { useState} from 'react';
+
 import Logo from './ui/Logo';  
 import Icon from './ui/Icon';  
 import './App.css';
@@ -6,11 +8,14 @@ import ResponseBox from './ui/ResponseBox';
 import IconDropdown from './ui/IconDropdown';
 import { t } from './languageUtils';
 import EnterLanguageDropdown from './ui/EnterLanguageDropdown';
+import TranscriptionDisplay from './api/TranscriptionDisplay';
+
 
 function App() {
   const [selectLanguage, setSelectLanguage] = useState(''); // selectLanguage stores the langauge picked
   const [dropOpen, setDropOpen] = useState(false); // state to control the visibility of the dropdown
   const [language, setLanguage] = useState('english'); // state to keep track of the selected language
+
   const handleIconClick = () => { // function to handle the icon click, toggles the dropdown
     setDropOpen(!dropOpen);
   };
@@ -20,6 +25,7 @@ function App() {
   };
 
   const [resultWindow, setResultWindow] = useState(false); // turn true after api call
+  
 
   return (
     <div className = "App">
@@ -52,8 +58,14 @@ function App() {
           </>
         )
       }
-      
+      {/* Display the TranscriptionDisplay component which will handle the transcription display */}
+      <TranscriptionDisplay />
     </div>
+
+
+
+
+
   );
 }
 
