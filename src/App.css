@@ -23,13 +23,14 @@ body {
 }
 
 .header{
-  width: 98vw;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   /*background-color: rgb(179, 182, 182);*/
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  padding-right: 25px;
   margin-bottom: 0px;
   border-bottom: 2px solid black;
 }
@@ -38,13 +39,19 @@ body {
 .language-dropdown {
   position: fixed;
   background-color: whitesmoke;
-  top: 70px; /* adjust here to move the dropdown box */
+  top: 60px; /* adjust here to move the dropdown box */
   left: 15px; /* adjust here to move the dropdown box */
   border: 1px solid black;
   border-radius: 10px;
   padding: 5px;
   display: flex;
   flex-direction: column;
+  z-index: 100;
+}
+
+.icon-container {
+  margin: -15px;
+  padding-left: 10px;
 }
 
 .language-dropdown button {
@@ -153,7 +160,7 @@ body {
 }
 /* for each input grid item */
 .input-grid-item {
-  width: 60%;
+  width: 100%;
   padding-inline: 20px;
   padding-bottom: 10px;
   justify-content: center;
@@ -161,6 +168,8 @@ body {
   border-radius: 10px; /* rounded corners */
   text-align: center; /* align text inside the inputs */
   margin-bottom: 0px; /* Space between items */
+  display: flex;
+  flex-direction: column;
 }
 
 /* styling for the text from user input */

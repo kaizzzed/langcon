@@ -1,14 +1,16 @@
 import React from 'react';
 import './BeginButton.css'; // style for the button
+import { t } from '../languageUtils';
 
 type BeginButtonProps = {
   onClick: () => void;
+  language: string;
 };
 
-const BeginButton: React.FC<BeginButtonProps> = ({ onClick }) => {
+const BeginButton: React.FC<BeginButtonProps> = ({ onClick, language}) => {
   return (
     <button onClick={onClick} className="begin-button">
-      BEGIN
+      {t(language, "begin")}
     </button>
   );
 };

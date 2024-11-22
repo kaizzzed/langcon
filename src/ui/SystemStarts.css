@@ -31,3 +31,6 @@
     left: 25px; /* toggled on: move knob to the right */
   }
   
+  .small-label {
+    width: fit-content;
+  }

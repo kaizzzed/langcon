@@ -7,7 +7,6 @@ import ResponseBox from './ui/ResponseBox';
 import Speaker from './ui/Volume';
 import Microphone from './ui/Microphone';
 import IconDropdown from './ui/IconDropdown';
-import { t } from './languageUtils';
 import SystemRole from './ui/SystemRole';
 import UserRole from './ui/UserRole';
 import NumLines from './ui/NumLines';
@@ -40,8 +39,8 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-        <div className="IconContainer">
-          <Icon height={64} width={64} onClick={handleIconClick} />
+        <div className="icon-container">
+          <Icon height={80} width={80} onClick={handleIconClick} />
         </div>
         <div className="LogoContainer">
           <Logo height={40} width={130}/> 
@@ -62,7 +61,7 @@ function App() {
               <IconDropdown setLanguage={handleLanguageSelect} />
             )}
             <div className='center-section'>
-              <EnterLanguageDropdown setLanguage={setSelectLanguage} />
+              <EnterLanguageDropdown setLanguage={setSelectLanguage} language={language}/>
               <ResponseBox onSubmit={handleResponseSubmit} language={language}/>
 
               {/* grid container for user inputs */}
@@ -82,7 +81,7 @@ function App() {
                 <div className="input-grid-item">
                 </div>
                 <div className="input-grid-item">
-                  <BeginButton onClick={() => console.log('Begin button clicked!')} />
+                  <BeginButton onClick={() => console.log('Begin button clicked!')} language={language}/>
                 </div>
                 
               </div>

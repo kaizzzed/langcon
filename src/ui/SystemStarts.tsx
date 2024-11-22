@@ -10,7 +10,7 @@ const SystemStarts = () => {
 
   return (
     <div className="input-container">
-      <label htmlFor="system-starts">SYSTEM STARTS?</label>
+      <label htmlFor="system-starts" className="small-label">SYSTEM STARTS?</label>
       <div
         id="system-starts" 
         onClick={handleToggle}
