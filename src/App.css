@@ -1,13 +1,13 @@
 * {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Karla', sans-serif;
 }
 
-html, body {
+body {
   margin: 0;
   padding: 0;
   height: 100%;
   background-color: whitesmoke;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Karla', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: normal;
   width: 100%;
 }
 
@@ -26,19 +26,26 @@ p {
   margin-top: 100px;
 }
 
-.header {
+.header{
   width: 100vw;
   display: flex;
   flex-direction: row;
+  /*background-color: rgb(179, 182, 182);*/
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid black;
 }
-
+.FAQ {
+  stroke-width: 100px;  
+  stroke: black;  
+}
 /* all stuff to do with the globe dropdown for languages */
 
 .language-dropdown {
-  position: absolute;
+  position: fixed;
+  background-color: whitesmoke;
   top: 70px; /* adjust here to move the dropdown box */
   left: 15px; /* adjust here to move the dropdown box */
   border: 1px solid black;
@@ -72,6 +79,7 @@ p {
   width: 100%;
   background-color: transparent;
   color: black;
+  background-color: white;
   padding: 8px;
   font-size: 16px;
   border: none;
@@ -134,92 +142,72 @@ p {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  padding:20px;
   margin-top: 10px;
 }
 /*grid for speaker and microphone */
 .speak-grid-container {
   display: grid; 
-  grid-template-columns: repeat(3, 1fr); /*3 equal columns */
-  gap: 20px; 
-  padding: 20px; 
+  grid-template-columns: repeat(2, 1fr); /*2 equal columns */
+  gap: 25%; 
+  padding-inline: 0px; 
+  padding-top: 20px;
+  width: 100%;
+  align-items: center;
   grid-template-rows: auto; /* adjust row heights based on content */
 }
-
-/*style individual grid items */
-.speak-grid-item {
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
-}
-
 .speak-grid-container .speak-grid-item:nth-child(1) {
-  background-color: lightblue;
-  color: darkblue;
+  justify-self: end;
 }
-
 .speak-grid-container .speak-grid-item:nth-child(2) {
-  background-color: lightgreen;
-  color: darkgreen;
-}
-
-.speak-grid-container .speak-grid-item:nth-child(3) {
-  background-color: lightcoral;
-  color: darkred;
-}
-
-/*.container { /* holds grid 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns 
-  grid-template-rows: repeat(2, 150px); /* 2 rows same height 
-  gap: 10px; /* space between grid 
-} 
-/* for each grid item */
-.item {
-  border: 1px solid #000;
-  padding: 20px;
-  text-align: center;
-  background-color: whitesmoke;
-  
+  justify-self: end;
 }
 /* container for user input section */
 .input-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /*2 columns for input fields */
-  gap: 60px;
-  max-width: 100%; 
-  max-height: 2%;
-  margin-top: 5px;
-  margin-bottom: 30px; 
-  justify-items: legacy; 
-  flex-wrap: wrap; /*do not stack vertically*/
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); /*3 equal columns */
+  grid-template-rows: repeat(2, 1fr); 
+  gap: 4px; 
+  width: 100%; 
+  max-height: 50px;
+  margin-top: 0;
+  margin-bottom: 20px; 
+  grid-template-rows: auto; /* adjust row heights based on content */
+  justify-items: center; 
+  flex-wrap: wrap; 
 }
 /* for each input grid item */
 .input-grid-item {
-  width: 30%;
-  height: 30%;
-  display: flex;
+  width: 60%;
+  padding-inline: 20px;
+  padding-bottom: 10px;
   justify-content: center;
-  align-items: right;
-  padding: 20px;
-  background-color: #f4f4f4;
-  border: 1px solid #000; 
+  align-items: center;
   border-radius: 10px; /* rounded corners */
   text-align: center; /* align text inside the inputs */
-  margin-bottom: 15px; /* Space between items */
+  margin-bottom: 0px; /* Space between items */
 }
 
-/* Styling for the input fields */
+/* styling for the text from user input */
 .input-grid input {
   width: 100%; 
   padding: 5px;
   font-size: 13px;
   border: 100px; 
   border-radius: 10px; /* rounded corners */
-  background-color: transparent; 
+  background-color: white; 
+  border: 1px solid #ddd;
   color: black; /* text color */
   text-align: left; /* align text to the left  */
   box-sizing: border-box; 
 }
+.input-container label {
+  display: block;  
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 5px;
+  font-size:12px;
+  border-bottom: 1px solid black;
+}
 
-/* Styling for the container of the input fields (same as .enter-language-button styling) */
 

@@ -27,8 +27,7 @@ function ResponseBox({ onSubmit, language }: ResponseBoxProps) { // passes the p
         onChange={(e) => setResponse(e.target.value)} // runs when user types input
         placeholder={t(language, "enterYourScenarioHere")}
       />
-      <BeginButton onClick={handleSubmit} /> {/* pass handleSubmit directly */}
-    </div>
+      </div>
   );
 }
 

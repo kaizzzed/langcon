@@ -8,7 +8,7 @@ type BeginButtonProps = {
 const BeginButton: React.FC<BeginButtonProps> = ({ onClick }) => {
   return (
     <button onClick={onClick} className="begin-button">
-      Begin
+      BEGIN
     </button>
   );
 };

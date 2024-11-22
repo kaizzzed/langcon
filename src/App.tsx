@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Logo from './ui/Logo';
-import Question from './ui/Question';
+import Question from './ui/FAQ';
 import Icon from './ui/Icon';
 import './App.css';
 import ResponseBox from './ui/ResponseBox';
@@ -44,10 +44,10 @@ function App() {
           <Icon height={64} width={64} onClick={handleIconClick} />
         </div>
         <div className="LogoContainer">
-          <Logo height={30} width={100}/> 
+          <Logo height={40} width={130}/> 
         </div>
         <div className="FAQ">
-          <Question height={45} width={45}/> 
+          <Question height={40} width={40}/> 
         </div>
       </div>
 
@@ -79,17 +79,20 @@ function App() {
                 <div className="input-grid-item">
                   <SystemStarts />
                 </div>
+                <div className="input-grid-item">
+                </div>
+                <div className="input-grid-item">
+                  <BeginButton onClick={() => console.log('Begin button clicked!')} />
+                </div>
               </div>
 
               <div className="speak-grid-container">
                 <div className="speak-grid-item">
-                  <Speaker height={55} width={55} />
+                  <Microphone height={40} width={40} />
                 </div>
+                  <Speaker height={40} width={40} />
                 <div className="speak-grid-item">
-                  <BeginButton onClick={() => console.log('Begin button clicked!')} />
-                </div>
-                <div className="speak-grid-item">
-                  <Microphone height={55} width={55} />
+                  
                 </div>
               </div>
 

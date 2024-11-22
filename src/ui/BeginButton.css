@@ -1,5 +1,5 @@
 .begin-button {
-    bottom: -40px;
+    bottom: -10px;
     width: 80px;
     right: 0;
     padding: 10px 20px;
@@ -8,7 +8,7 @@
     color: #333;
     border: 2px #ddd;
     border-radius: 12px;
-    position: absolute;
+    position: relative;
   }
   
   .begin-button:hover {
