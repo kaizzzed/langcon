@@ -160,7 +160,7 @@ body {
 }
 /* for each input grid item */
 .input-grid-item {
-  width: 100%;
+  width: 60%;
   padding-inline: 20px;
   padding-bottom: 10px;
   justify-content: center;
@@ -168,8 +168,6 @@ body {
   border-radius: 10px; /* rounded corners */
   text-align: center; /* align text inside the inputs */
   margin-bottom: 0px; /* Space between items */
-  display: flex;
-  flex-direction: column;
 }
 
 /* styling for the text from user input */
@@ -215,5 +213,7 @@ body {
 .speak-grid-container .speak-grid-item:nth-child(2) {
   justify-self: end;
 }
+
+
 
 

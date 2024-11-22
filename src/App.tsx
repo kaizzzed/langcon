@@ -10,7 +10,6 @@ import IconDropdown from './ui/IconDropdown';
 import SystemRole from './ui/SystemRole';
 import UserRole from './ui/UserRole';
 import NumLines from './ui/NumLines';
-import SystemStarts from './ui/SystemStarts';
 import BeginButton from './ui/BeginButton';
 import EnterLanguageDropdown from './ui/EnterLanguageDropdown';
 
@@ -35,7 +34,7 @@ function App() {
     setSelectLanguage(lang); // Optionally set both states
     setDropOpen(false); // Close the dropdown after selection
   };
-
+  /* api logic */
   return (
     <div className="App">
       <div className="header">
@@ -74,9 +73,6 @@ function App() {
                 </div>
                 <div className="input-grid-item">
                   <NumLines />
-                </div>
-                <div className="input-grid-item">
-                  <SystemStarts />
                 </div>
                 <div className="input-grid-item">
                 </div>
