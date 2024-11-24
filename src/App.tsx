@@ -36,6 +36,7 @@ function App() {
       setSelectLanguage(lang); // Optionally set both states
       setDropOpen(false); // Close the dropdown after selection
     };
+    
   /* api logic */
   return (
     <div className="App">
