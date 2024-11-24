@@ -13,14 +13,20 @@ import NumLines from './ui/NumLines';
 import SystemStarts from './ui/SystemStarts';
 import BeginButton from './ui/BeginButton';
 import EnterLanguageDropdown from './ui/EnterLanguageDropdown';
+import FAQDropdown from './ui/FAQDropdown';
 
 function App() {
   const [selectLanguage, setSelectLanguage] = useState(''); // selectLanguage stores the language picked
   const [dropOpen, setDropOpen] = useState(false); // state to control the visibility of the dropdown
+  const [dropFAQOpen, setDropFAQOpen] = useState(false); // control visibility of faq
   const [language, setLanguage] = useState('english'); // state to keep track of the selected language
   
   const handleIconClick = () => { // function to handle the icon click, toggles the dropdown
     setDropOpen(!dropOpen);
+  };
+  
+  const handleFAQClick = () => { // function to handle the icon click, toggles the dropdown
+    setDropFAQOpen(!dropFAQOpen);
   };
 
   const handleResponseSubmit = (response: any) => { // function to handle the submission of user responses
@@ -46,7 +52,7 @@ function App() {
           <Logo height={40} width={130}/> 
         </div>
         <div className="FAQ">
-          <Question height={40} width={40}/> 
+          <Question height={40} width={40} onClick={handleFAQClick} />
         </div>
       </div>
 
@@ -60,6 +66,9 @@ function App() {
             {dropOpen && (
               <IconDropdown setLanguage={handleLanguageSelect} />
             )}
+            {dropFAQOpen && (
+              <FAQDropdown language={language} />
+            )}
             <div className='center-section'>
               <EnterLanguageDropdown setLanguage={setSelectLanguage} language={language}/>
               <ResponseBox onSubmit={handleResponseSubmit} language={language}/>
@@ -67,13 +76,13 @@ function App() {
               {/* grid container for user inputs */}
               <div className="input-grid">
                 <div className="input-grid-item">
-                  <SystemRole />
+                  <SystemRole language={language} />
                 </div>
                 <div className="input-grid-item">
-                  <UserRole />
+                  <UserRole language={language} />
                 </div>
                 <div className="input-grid-item">
-                  <NumLines />
+                  <NumLines language={language} />
                 </div>
                 <div className="input-grid-item">
                   <SystemStarts />

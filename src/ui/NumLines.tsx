@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { t } from '../languageUtils';
 
-const NumLines: React.FC = () => {
+type NumLinesProp = {
+  language:string;
+};
+
+function NumLines({language}: NumLinesProp){
   const [numLines, setNumLines] = useState<string>("");//holds value of input
   const [isInvalid, setIsInvalid] = useState<boolean>(false);//state variable that's either valid or invalid
 
@@ -18,7 +23,7 @@ const NumLines: React.FC = () => {
 
   return (
     <div className="input-container">
-      <label htmlFor="num-lines">NUM OF LINES</label>
+      <label htmlFor="num-lines">{t(language, "numOfLines")}</label>
       <input
         id="num-lines"
         type="number"//onl accept numbers
@@ -33,5 +38,6 @@ const NumLines: React.FC = () => {
     </div>
   );
 };
+
 
 export default NumLines;
