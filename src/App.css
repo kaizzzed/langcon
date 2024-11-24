@@ -53,6 +53,10 @@ body {
   margin: -15px;
   padding-left: 10px;
 }
+.logo-container{
+  margin: -20px;
+  padding-right: 0px;
+}
 
 .language-dropdown button {
   background-color: transparent;

@@ -4,5 +4,5 @@ type LogoProps = {
   width: number;
 };
 export default function Logo(props: LogoProps) {
-  return <img src={LangConv} height={props.height} width={props.width} alt="LangConv Logo" />;
+  return <img src={LangConv} height={props.height} width={props.width} alt="LangConv" />;
 }
