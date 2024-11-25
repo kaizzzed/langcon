@@ -17,6 +17,7 @@ import FAQDropdown from './ui/FAQDropdown';
 
 function App() {
   const [selectLanguage, setSelectLanguage] = useState(''); // selectLanguage stores the language picked
+  const [selectLanguageDropdown, setSelectLanguageDropdown] = useState(''); // selectLanguage stores the language picked
   const [dropOpen, setDropOpen] = useState(false); // state to control the visibility of the dropdown
   const [dropFAQOpen, setDropFAQOpen] = useState(false); // control visibility of faq
   const [language, setLanguage] = useState('english'); // state to keep track of the selected language
@@ -70,7 +71,7 @@ function App() {
               <FAQDropdown language={language} />
             )}
             <div className='center-section'>
-              <EnterLanguageDropdown setLanguage={setSelectLanguage} language={language}/>
+              <EnterLanguageDropdown setLanguage={setSelectLanguageDropdown} selectedLanguage={selectLanguageDropdown} language={language}/>
               <ResponseBox onSubmit={handleResponseSubmit} language={language}/>
 
               {/* grid container for user inputs */}

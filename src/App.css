@@ -87,7 +87,7 @@ body {
   padding-right: 10px;
 }
 
-.faq-answer {
+.faq-item:not(:nth-child(3)) {
   border-bottom: 1px solid black;
   padding-bottom: 10px;
 }

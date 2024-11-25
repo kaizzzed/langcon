@@ -6,8 +6,6 @@ type FaqProp = {
 };
 
 export default function FAQDropdown({ language }: FaqProp) {
-  const [faqDropOpen, setFaqDropOpen] = useState(false);
-
   const faqItems = [
     {
       question: "What is this app about?",
@@ -22,10 +20,6 @@ export default function FAQDropdown({ language }: FaqProp) {
       answer: "3",
     },
   ];
-
-  const toggleDropdown = () => {
-    setFaqDropOpen(!faqDropOpen);
-  };
 
   return (
     <div className="faq-dropdown">

@@ -4,6 +4,7 @@ import { t } from '../languageUtils';
 
 type LanguageProp = {
   setLanguage: (language: string) => void;
+  selectedLanguage: string;
   language: string;
 };
 
@@ -94,7 +95,7 @@ export default function EnterLanguageDropdown({language, ...props}: LanguageProp
       {/* button to toggle the enter language dropdown menu */}
       <button onClick={toggleDropdown} className="enter-language-button">
         <span>
-          {t(language, "enterALanguage")}
+          {props.selectedLanguage == "" ? t(language, "enterALanguage") : props.selectedLanguage}
         </span>
         <img src={CarrotDown} alt="carrot down" width={30} height={30}></img>
       </button>
