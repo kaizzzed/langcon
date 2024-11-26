@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 const port = 5000;
 
-// Middleware to parse JSON
+// middleware to parse JSON
 app.use(bodyParser.json());
 
 // API key from .env file
