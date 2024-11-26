@@ -39,7 +39,6 @@ function App() {
   // function to handle the selection of a language
   const handleLanguageSelect = (lang: string) => {
     setLanguage(lang);
-    setSelectLanguage(lang); // Optionally set both states
     setDropOpen(false); // Close the dropdown after selection
   };
 
