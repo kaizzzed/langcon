@@ -11,6 +11,6 @@
   position: relative;
 }
 
-.recording:hover {
+.recording-active {
   background-color: green;
 }

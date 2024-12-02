@@ -5,7 +5,6 @@ const Main = () => {
 
     return (
         <div>
-            <button onClick = {startListening}>Start Listening</button>
         </div>
 
         
