@@ -1,6 +1,5 @@
 import {useEffect, useState } from 'react';
 
-
 let recognitition: any = null;
 if('webkitSpeechRecognition' in window) {
     recognitition = new webkitSpeechRecognition();
@@ -23,9 +22,15 @@ const useSpeechRecognition = () => {
         }
     }, []);
 
-    const startListening = () => {
+     /**
+      * 
+      * @param languageKey Use ISO-3166-1 (e.g. en-US, de-AT) language keys - otherwise this won't work!!
+      */
+    const startListening = (languageKey: string) => {
         setText('')
         setIsListening(true)
+        recognitition.lang = languageKey;
+        console.log(languageKey);
         recognitition.start()
     };
 
