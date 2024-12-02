@@ -11,11 +11,14 @@ type ResponseBoxProps = {
 function ResponseBox({ onSubmit, language }: ResponseBoxProps) { // passes the prop from ResponseBoxProps
   const [response, setResponse] = useState<string>(""); // store what user types
 
-  const handleSubmit = () => { // function will run when Begin button clicked
-    if (response.trim()) { // remove spaces at start/end + if empty, not run
-      onSubmit(response); // call onSubmit to handle the response
-      setResponse(""); // after input, clears box
-    }
+  // const handleSubmit = () => { // function will run when Begin button clicked
+  //   if (response.trim()) { // remove spaces at start/end + if empty, not run
+  //     onSubmit(response); // call onSubmit to handle the response
+  //     setResponse(""); // after input, clears box
+  //   }
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setResponse(e.target.value);
+    onSubmit(e.target.value); // Pass input to the parent
   };
 
   return (
@@ -24,7 +27,8 @@ function ResponseBox({ onSubmit, language }: ResponseBoxProps) { // passes the p
       <textarea
         id="response" // label
         value={response} // show input in box
-        onChange={(e) => setResponse(e.target.value)} // runs when user types input
+        onChange={handleInputChange}
+        //onChange={(e) => setResponse(e.target.value)} // runs when user types input
         placeholder={t(language, "enterYourScenarioHere")}
       />
       </div>

@@ -10,7 +10,7 @@ type StartRecordingProps = {
 const StartRecording: React.FC<StartRecordingProps> = ({ onClick, language }) => {
   return (
     <button onClick={onClick} className="recording">
-      {t(language, 'StartRecording')} 
+      {/* {t(language, 'StartRecording')}  */}
     </button>
   );
 };

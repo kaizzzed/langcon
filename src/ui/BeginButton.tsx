@@ -4,13 +4,13 @@ import { t } from '../languageUtils';
 
 type BeginButtonProps = {
   onClick: () => void;
-  language: string;
+  text: string;
 };
 
-const BeginButton: React.FC<BeginButtonProps> = ({ onClick, language}) => {
+const BeginButton: React.FC<BeginButtonProps> = ({ onClick, text}) => {
   return (
     <button onClick={onClick} className="begin-button">
-      {t(language, "begin")}
+      {t(text, "begin")}
     </button>
   );
 };

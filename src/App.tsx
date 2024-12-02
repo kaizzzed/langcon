@@ -14,25 +14,35 @@ import UserRole from './ui/UserRole';
 import BeginButton from './ui/BeginButton';
 import EnterLanguageDropdown from './ui/EnterLanguageDropdown';
 import useSpeechRecognition from './hooks/useSpeechRecognitionHook';
+import FAQDropdown from './ui/FAQDropdown';
 
 function App() {
-  const [language, setLanguage] = useState('english');
-  const [dropOpen, setDropOpen] = useState(false);
   const [response, setServerResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [systemRole, setSystemRole] = useState('');
   const [userRole, setUserRole] = useState('');
   const [resultWindow, setResultWindow] = useState(false);
   const [userInput, setUserInput] = useState(''); // Store user input
-
+  const [selectLanguageDropdown, setSelectLanguageDropdown] = useState(''); // selectLanguage stores the language picked
+  const [dropOpen, setDropOpen] = useState(false); // state to control the visibility of the dropdown
+  const [dropFAQOpen, setDropFAQOpen] = useState(false); // control visibility of faq
+  const [language, setLanguage] = useState('english'); // state to keep track of the page language
   const { startListening, stopListening, isListening, hasRecognitionSupport } =
     useSpeechRecognition();
 
   const handleIconClick = () => setDropOpen((prev) => !prev);
+  
+  const handleFAQClick = () => { // function to handle the icon click, toggles the dropdown
+    setDropFAQOpen(!dropFAQOpen);
+  };
 
-  const handleResponseSubmit = async (userInput) => {
+  const handleResponseSubmit = async (userInput: string) => {
     setIsLoading(true);
     try {
+      console.log(userInput);
+      console.log("systemrole"+ systemRole);
+      console.log("userrole" + userRole);
+      console.log("language"+selectLanguageDropdown)
       const response= await fetch('http://localhost:5000/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
@@ -41,11 +51,11 @@ function App() {
         userInput,
         systemRole,
         userRole,
-        language
+        selectLanguageDropdown
       }),
     });
       const data = await response.json();
-      setResponse(data.response);
+      setServerResponse(data.response);
       setResultWindow(true);
     } catch (error) {
       console.error('API Error:', error);
@@ -55,7 +65,7 @@ function App() {
     }
   };
 
-  const handleLanguageSelect = (language) => {
+  const handleLanguageSelect = (lang:string) => {
     setLanguage(language);
     setDropOpen(false);
   };
@@ -69,8 +79,7 @@ function App() {
   };
 
   const handleBeginButtonClick = () => {
-    // If using speech recognition, collect user input and submit it to ChatGPT
-    if (userInput) {
+    if (userInput.trim()) {
       handleResponseSubmit(userInput);
     } else {
       alert("Please provide some input.");
@@ -100,14 +109,18 @@ function App() {
         </div>
       ) : (
         <div className="center-section">
-          {dropOpen && <IconDropdown onSelectLanguage={handleLanguageSelect} />}
-          <EnterLanguageDropdown
-            setLanguage={handleLanguageSelect}
+          {dropOpen && <IconDropdown setLanguage={handleLanguageSelect} />}
+          
+          <EnterLanguageDropdown 
+          setLanguage={setSelectLanguageDropdown} 
+          selectedLanguage={selectLanguageDropdown} 
+          language={language}/>
+
+          {/* <ResponseBox onSubmit={handleResponseSubmit} language={language}/> */}
+          <ResponseBox
+            onSubmit={(input) => setUserInput(input)} // Captures user input
             language={language}
           />
-
-          <ResponseBox onSubmit={handleResponseSubmit} language={language} serverResponse={response} loading={isLoading} />
-
           <div className="input-grid">
             <div className="input-grid-item">
               <SystemRole onSystemRoleChange={setSystemRole} />
@@ -123,16 +136,19 @@ function App() {
             </div>
             <div className="speak-grid-item">
               {/* On click, trigger ChatGPT request with user input */}
-              <BeginButton onClick={handleBeginButtonClick} language={language} />
+              <BeginButton onClick={handleBeginButtonClick} text={language} />
             </div>
             <div className="speak-grid-item">
               <Speaker height={50} width={50} />
             </div>
             <div className="speak-grid-item">
-              <StartRecording onClick={handleBegin} language={language} />
+            <StartRecording
+                onClick={hasRecognitionSupport ? startListening : () => alert('Speech recognition not supported')}
+                language={language}
+              />
+              {/* <StartRecording onClick={handleBegin} language={language} /> */}
             </div>
           </div>
-
           {isLoading && <p>Loading...</p>}
         </div>
       )}

@@ -1,20 +1,17 @@
-//the index is calling from app and displaying it by sending html to user client
-import React from "react"
-import ReactDOM from "react-dom"
-import App from "./App"
+import React from "react";
+import ReactDOM from "react-dom/client"; // Import createRoot
+import App from "./App";
 import { Provider } from "react-redux";
-import "./index.scss"
-import { store } from "./store/store"
+import "./index.scss";
+import { store } from "./store/store";
 
-ReactDOM.render(
+// Create root for rendering
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+
+root.render(
     <React.StrictMode>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </React.StrictMode>,
-    document.getElementById('root'),
-  )
-export {}
-
-
-
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </React.StrictMode>
+);

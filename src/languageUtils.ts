@@ -1,6 +1,8 @@
-export function t(language: any, key: keyof typeof content.english): string{
+
+
+export function t(pageLanguage: any, key: keyof typeof content.english): string{
     // @ts-ignore
-    return content[language][key];
+    return content[pageLanguage][key];
 }
 const content = {
     english: {
