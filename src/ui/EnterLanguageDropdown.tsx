@@ -66,7 +66,7 @@ export default function EnterLanguageDropdown({
     // "Kannada",
     // "Kazakh",
     // "Khmer",
-    // "Korean",
+    { key: "ko", value: "Korean" },
     // "Kurdish",
     // "Kyrgyz",
   ];

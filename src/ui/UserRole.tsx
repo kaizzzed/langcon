@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { t } from '../languageUtils';
 
 interface UserRoleProps {
   onUserRoleChange: (newRole: string) => void;
+  language:string;
 }
 
-const UserRole: React.FC<UserRoleProps> = ({ onUserRoleChange }) => {
+const UserRole: React.FC<UserRoleProps> = ({ onUserRoleChange, language}) => {
   const [role, setRole] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,11 +16,11 @@ const UserRole: React.FC<UserRoleProps> = ({ onUserRoleChange }) => {
   };
   return (
     <div className="input-container">
-      <label htmlFor="user-role">USER ROLE</label>
+      <label htmlFor="user-role">{t(language, "userRole")}</label>
       <input
         id="user-role"
         type="text"
-        placeholder="Enter user role"
+        placeholder={`e.g. ${t(language, "student")}`}
         value={role}
         onChange={handleChange}
       />

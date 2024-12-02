@@ -136,7 +136,7 @@ function App() {
               <SystemRole onSystemRoleChange={setSystemRole} />
             </div>
             <div className="input-grid-item">
-              <UserRole onUserRoleChange={setUserRole} />
+              <UserRole onUserRoleChange={setUserRole} language={language} />
             </div>
           </div>
 
