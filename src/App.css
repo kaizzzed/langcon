@@ -221,6 +221,33 @@ body {
   margin-top: -15%;
 }
 
+.faq-dropdown {
+  position: fixed;
+  background-color: whitesmoke;
+  top: 60px; /* adjust here to move the dropdown box */
+  right: 15px; /* adjust here to move the dropdown box */
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.FAQ {
+  margin: -15px;
+  padding-right: 10px;
+}
+.faq-item:not(:nth-child(3)) {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+.faq-question {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
 
 
 
