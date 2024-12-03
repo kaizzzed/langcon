@@ -5,13 +5,17 @@ import './StartRecording.css';
 type StartRecordingProps = {
   onClick: () => void;
   language: string;
+  isListening: boolean;
 };
 
-const StartRecording: React.FC<StartRecordingProps> = ({ onClick, language }) => {
+const StartRecording: React.FC<StartRecordingProps> = ({ onClick, language, isListening }) => {
   return (
-    <button onClick={onClick} className="recording">
-      {/* {t(language, 'StartRecording')}  */}
-    </button>
+    <div className="recording-container">
+      <button onClick={onClick} className={`recording ${isListening ? "recording-active" : ""}`}>
+        <span className="recording-icon"></span>
+      </button>
+      <label htmlFor="recording" className="recording-label">{t(language, "startRecording")}</label>
+    </div>
   );
 };
 

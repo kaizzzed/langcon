@@ -1,8 +1,6 @@
-
-
-export function t(pageLanguage: any, key: keyof typeof content.english): string{
+export function t(language: any, key: keyof typeof content.english): string{
     // @ts-ignore
-    return content[pageLanguage][key];
+    return content[language][key];
 }
 const content = {
     english: {
@@ -14,7 +12,8 @@ const content = {
         userRole: "USER ROLE",
         numOfLines: "NUM OF LINES",
         teacher: "Teacher",
-        student: "Student"
+        student: "Student",
+        startRecording: "Start Recording"
     },
     chinese: {
         enterScenario: "进入场景",
@@ -25,7 +24,8 @@ const content = {
         userRole: "用户角色",
         numOfLines: "行数",
         teacher: "老师",
-        student: "学生"
+        student: "学生",
+        startRecording: "开始录音"
     },
     spanish: {
         enterScenario: "Ingresar al escenario",
@@ -37,5 +37,6 @@ const content = {
         numOfLines: "NÚMERO DE LÍNEAS",
         teacher: "Maestra",
         student: "Alumna",
+        startRecording: "Iniciar grabación"
     }
 }

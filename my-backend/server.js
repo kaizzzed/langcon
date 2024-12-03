@@ -1,3 +1,5 @@
+
+
 require('dotenv').config(); // Ensure this is at the top
 
 console.log('API Key:', process.env.OPENAI_API_KEY);

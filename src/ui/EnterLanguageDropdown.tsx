@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CarrotDown from "../assets/images/CarrotDown.svg";
 import { t } from "../languageUtils";
+import { Value } from "sass";
 
 type LanguageProp = {
   setLanguage: (language: string) => void;
@@ -19,56 +20,12 @@ export default function EnterLanguageDropdown({
 
   // list of options available in the dropdown
   const options = [
-    // "Afrikaans",
-    // "Albanian",
-    // "Amharic",
-    // "Arabic",
-    // "Armenian",
-    // "Azerbaijani",
-    // "Basque",
-    // "Belarusian",
-    // "Bengali",
-    // "Bosnian",
-    // "Bulgarian",
-    // "Catalan",
-    // "Cebuano",
     { key: "zh", value: "Chinese" },
-    // "Corsican",
-    // "Croatian",
-    // "Czech",
-    // "Danish",
-    // "Dutch",
     { key: "en", value: "English" },
-    // "Esperanto",
-    // "Estonian",
-    // "Filipino",
-    // "Finnish",
-    // "French",
-    // "Galician",
-    // "Georgian",
     { key: "de", value: "German" },
-    // "Greek",
-    // "Gujarati",
-    // "Haitian Creole",
-    // "Hausa",
-    // "Hawaiian",
-    // "Hebrew",
-    // "Hindi",
-    // "Hmong",
-    // "Hungarian",
-    // "Icelandic",
-    // "Igbo",
-    // "Indonesian",
-    // "Irish",
-    // "Italian",
-    // "Japanese",
-    // "Javanese",
-    // "Kannada",
-    // "Kazakh",
-    // "Khmer",
+    { key: "ja", value: "Japanese" },
     { key: "ko", value: "Korean" },
-    // "Kurdish",
-    // "Kyrgyz",
+    { key: "es", value: "Spanish"}
   ];
 
   // function to toggle the dropdown's visibility

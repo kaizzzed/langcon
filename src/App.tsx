@@ -23,15 +23,17 @@ function App() {
   const [userRole, setUserRole] = useState('');
   const [resultWindow, setResultWindow] = useState(false);
   const [userInput, setUserInput] = useState(''); // Store user input
-  const [selectLanguageDropdown, setSelectLanguageDropdown] = useState(''); // selectLanguage stores the language picked
+  const [selectedLanguage, setSelectedLanguage] = useState(''); // selectLanguage stores the language picked
   const [dropOpen, setDropOpen] = useState(false); // state to control the visibility of the dropdown
   const [dropFAQOpen, setDropFAQOpen] = useState(false); // control visibility of faq
   const [language, setLanguage] = useState('english'); // state to keep track of the page language
   const { startListening, stopListening, isListening, hasRecognitionSupport } =
     useSpeechRecognition();
 
-  const handleIconClick = () => setDropOpen((prev) => !prev);
-  
+  const handleIconClick = () => { // function to handle the icon click, toggles the dropdown
+    setDropOpen(!dropOpen);
+  };
+
   const handleFAQClick = () => { // function to handle the icon click, toggles the dropdown
     setDropFAQOpen(!dropFAQOpen);
   };
@@ -42,7 +44,7 @@ function App() {
       console.log(userInput);
       console.log("systemrole"+ systemRole);
       console.log("userrole" + userRole);
-      console.log("language"+selectLanguageDropdown)
+      console.log("language"+ selectedLanguage)
       const response= await fetch('http://localhost:5000/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
@@ -51,7 +53,7 @@ function App() {
         userInput,
         systemRole,
         userRole,
-        selectLanguageDropdown
+        selectedLanguage
       }),
     });
       const data = await response.json();
@@ -65,14 +67,19 @@ function App() {
     }
   };
 
-  const handleLanguageSelect = (lang:string) => {
+  const handleLanguageSelect = (language:string) => {
     setLanguage(language);
     setDropOpen(false);
   };
 
+  const handleSelectedLanguageSelect = (language: string) => {
+    setSelectedLanguage(language);
+  };
+
+
   const handleBegin = () => {
     if (hasRecognitionSupport) {
-      isListening ? stopListening() : startListening();
+      isListening ? stopListening() : startListening(selectedLanguage);
     } else {
       alert('Speech recognition is not supported on this device.');
     }
@@ -97,9 +104,13 @@ function App() {
           <Logo height={40} width={130} />
         </div>
         <div className="FAQ">
-          <Question height={40} width={40} />
+          <Question height={40} width={40} onClick={handleFAQClick}/>
         </div>
       </header>
+
+      {dropFAQOpen && (
+        <FAQDropdown language={language}></FAQDropdown>
+      )}
 
       {resultWindow ? (
         <div className="result-window">
@@ -112,8 +123,8 @@ function App() {
           {dropOpen && <IconDropdown setLanguage={handleLanguageSelect} />}
           
           <EnterLanguageDropdown 
-          setLanguage={setSelectLanguageDropdown} 
-          selectedLanguage={selectLanguageDropdown} 
+          setLanguage={handleSelectedLanguageSelect} 
+          selectedLanguage={selectedLanguage} 
           language={language}/>
 
           {/* <ResponseBox onSubmit={handleResponseSubmit} language={language}/> */}
@@ -123,10 +134,10 @@ function App() {
           />
           <div className="input-grid">
             <div className="input-grid-item">
-              <SystemRole onSystemRoleChange={setSystemRole} />
+              <SystemRole onSystemRoleChange={setSystemRole} language={language} />
             </div>
             <div className="input-grid-item">
-              <UserRole onUserRoleChange ={setUserRole} />
+              <UserRole onUserRoleChange={setUserRole} language={language} />
             </div>
           </div>
 
@@ -141,12 +152,10 @@ function App() {
             <div className="speak-grid-item">
               <Speaker height={50} width={50} />
             </div>
-            <div className="speak-grid-item">
-            <StartRecording
-                onClick={hasRecognitionSupport ? startListening : () => alert('Speech recognition not supported')}
-                language={language}
-              />
-              {/* <StartRecording onClick={handleBegin} language={language} /> */}
+            <div className="recording-container">
+              <StartRecording
+                onClick={handleBegin} language={language}
+                isListening={isListening} />
             </div>
           </div>
           {isLoading && <p>Loading...</p>}

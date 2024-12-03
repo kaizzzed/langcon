@@ -1,3 +1,10 @@
+
+.recording-container {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
 .recording {
   bottom: -10px;
   top: 0px;
@@ -9,8 +16,19 @@
   border: 2px solid #ddd; /* border color and style */
   border-radius: 50%;
   position: relative;
+  display: flex;  
 }
 
-.recording:hover {
+.recording-label {
+  font-size: 13px;
+  margin-top: 10%;
+  color: black; 
+  text-align: center; /* horizontally centered */
+  white-space: nowrap; /* prevent text wrapping */
+  transform: rotate(0deg);
+  writing-mode: horizontal-tb; /* force horizontal text layout */
+}
+.recording-active {
   background-color: green;
 }
+
