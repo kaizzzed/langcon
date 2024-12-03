@@ -1,23 +1,23 @@
 import {useEffect, useState } from 'react';
 
-let recognitition: any = null;
+let recognition: any = null;
 if('webkitSpeechRecognition' in window) {
-    recognitition = new webkitSpeechRecognition();
-    recognitition.continuous = true;
-    recognitition.lang = "en-US";
+    recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.lang = "en-US";
 }
 
 const useSpeechRecognition = () => {
-    const [text, setText] = useState("");
-    const [isListening, setIsListening] = useState(false);
+    const [text, setText] = useState<string>("");
+    const [isListening, setIsListening] = useState<boolean>(false);
 
     useEffect(()=> {
-        if(!recognitition) return;
+        if(!recognition) return;
 
-        recognitition.onresult = (event: SpeechRecognitionEvent) => {
+        recognition.onresult = (event: SpeechRecognitionEvent) => {
             console.log("onresult event: ", event);
             setText(event.results[0][0].transcript)
-            recognitition.stop();
+            recognition.stop();
             setIsListening(false);
         }
     }, []);
@@ -27,16 +27,24 @@ const useSpeechRecognition = () => {
       * @param languageKey Use ISO-3166-1 (e.g. en-US, de-AT) language keys - otherwise this won't work!!
       */
     const startListening = (languageKey: string) => {
-        setText('')
-        setIsListening(true)
-        recognitition.lang = languageKey;
-        console.log(languageKey);
-        recognitition.start()
+        if (!recognition) {
+            console.warn("Speech recognition is not supported in this browser.");
+            return;
+        }
+    
+        // dynamically set the language
+        recognition.lang = languageKey;
+    
+        // reset text and start listening
+        setText('');
+        setIsListening(true);
+        console.log(`Listening started with language: ${languageKey}`);
+        recognition.start();
     };
 
     const stopListening = () => {
         setIsListening(false)
-        recognitition.stop()
+        recognition.stop()
     };
     console.log(text)
     return {
@@ -44,7 +52,7 @@ const useSpeechRecognition = () => {
         isListening,
         startListening,
         stopListening,
-        hasRecognitionSupport: !!recognitition,
+        hasRecognitionSupport: !!recognition,
     }
 }
 
