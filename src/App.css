@@ -38,7 +38,7 @@ body {
 
 .language-dropdown {
   position: fixed;
-  background-color: whitesmoke;
+  background-color: white;
   top: 60px; /* adjust here to move the dropdown box */
   left: 15px; /* adjust here to move the dropdown box */
   border: 1px solid black;
@@ -59,7 +59,7 @@ body {
 }
 
 .language-dropdown button {
-  background-color: transparent;
+  background-color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -73,7 +73,7 @@ body {
 
 .faq-dropdown {
   position: fixed;
-  background-color: whitesmoke;
+  background-color: white;
   top: 60px; /* adjust here to move the dropdown box */
   right: 15px; /* adjust here to move the dropdown box */
   border: 1px solid black;
