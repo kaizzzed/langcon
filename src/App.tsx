@@ -15,6 +15,7 @@ import BeginButton from './ui/BeginButton';
 import EnterLanguageDropdown from './ui/EnterLanguageDropdown';
 import useSpeechRecognition from './hooks/useSpeechRecognitionHook';
 import FAQDropdown from './ui/FAQDropdown';
+import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 
 function App() {
   const [response, setServerResponse] = useState('');
@@ -24,6 +25,7 @@ function App() {
   const [resultWindow, setResultWindow] = useState(false);
   const [userInput, setUserInput] = useState(''); // Store user input
   const [selectedLanguage, setSelectedLanguage] = useState(''); // selectLanguage stores the language picked
+  const [selectedLanguageValue, setSelectedLanguageValue] = useState(''); // selectLanguage Values
   const [dropOpen, setDropOpen] = useState(false); // state to control the visibility of the dropdown
   const [dropFAQOpen, setDropFAQOpen] = useState(false); // control visibility of faq
   const [language, setLanguage] = useState('english'); // state to keep track of the page language
@@ -42,18 +44,18 @@ function App() {
     setIsLoading(true);
     try {
       console.log(userInput);
-      console.log("systemrole"+ systemRole);
-      console.log("userrole" + userRole);
-      console.log("language"+ selectedLanguage)
+      console.log("systemrole", systemRole);
+      console.log("userrole", userRole);
+      console.log("language", selectedLanguageValue)
       const response= await fetch('http://localhost:5000/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
         userInput,
         systemRole,
         userRole,
-        selectedLanguage
+        selectedLanguageValue
       }),
     });
       const data = await response.json();
@@ -72,8 +74,9 @@ function App() {
     setDropOpen(false);
   };
 
-  const handleSelectedLanguageSelect = (language: string) => {
+  const handleSelectedLanguageSelect = (language: string, languageValue: string) => {
     setSelectedLanguage(language);
+    setSelectedLanguageValue(languageValue);
   };
 
 
