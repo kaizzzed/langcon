@@ -24,3 +24,8 @@
     align-items: right;
 }
 
+.result-window .scenario-input textarea {
+    background-color: wheat; 
+    padding: 20px;
+  }
+

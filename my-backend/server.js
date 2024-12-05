@@ -59,7 +59,7 @@ chatApp.post('/api/chat', async (req, res) => {
       model: 'gpt-3.5-turbo',
       messages: [
         { role: 'system', content: `System is playing the role of: ${systemRole}` },
-        { role: 'user', content: `User is practicing ${selectLanguageDropdown}, role-playing as: ${userRole} in the scenario of: "${userInput}"` },
+        { role: 'user', content: `User is practicing ${selectLanguageDropdown}, start the conversation with one prompt with user role-playing as: ${userRole} in the scenario of: "${userInput}" and wait for user to respond` },
       ],
       max_tokens: 150,
       temperature: 0.7,

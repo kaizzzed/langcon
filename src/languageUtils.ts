@@ -13,7 +13,8 @@ const content = {
         numOfLines: "NUM OF LINES",
         teacher: "Teacher",
         student: "Student",
-        startRecording: "Start Recording"
+        startRecording: "Start Recording",
+        conversation: "Conversation"
     },
     chinese: {
         enterScenario: "进入场景",
@@ -25,7 +26,8 @@ const content = {
         numOfLines: "行数",
         teacher: "老师",
         student: "学生",
-        startRecording: "开始录音"
+        startRecording: "开始录音",
+        conversation: "对话"
     },
     spanish: {
         enterScenario: "Ingresar al escenario",
@@ -37,6 +39,7 @@ const content = {
         numOfLines: "NÚMERO DE LÍNEAS",
         teacher: "Maestra",
         student: "Alumna",
-        startRecording: "Iniciar grabación"
+        startRecording: "Iniciar grabación",
+        conversation: "Conversación"
     }
 }

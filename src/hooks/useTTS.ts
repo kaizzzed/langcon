@@ -1,28 +1,35 @@
-export {}; 
-// // hooks/useTextToSpeech.js
-// import { useEffect } from "react";
+import { useState } from "react";
 
-// const useTextToSpeech = (text, languageKey = "en-US") => {
-//   useEffect(() => {
-//     if (!text) return; // If no text, do nothing
+const useTextToSpeech = () => {
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
-//     // Create a new SpeechSynthesisUtterance
-//     const speech = new SpeechSynthesisUtterance();
-//     speech.text = text; // Set the text to be spoken
-//     speech.lang = languageKey; // Set the language for TTS
+  const speak = (text: string, language:string) => {
+    if ("speechSynthesis" in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = language;
 
-//     // Optional: Customize pitch and rate
-//     speech.pitch = 1; // Range: 0 to 2
-//     speech.rate = 1;  // Range: 0.1 to 10
+      // Set the speech rate (you can adjust this value as needed)
+      utterance.rate = 1.5; // Change to any value you prefer
 
-//     // Speak the text
-//     window.speechSynthesis.speak(speech);
+      // Get available voices and select a female voice
+      const voices = window.speechSynthesis.getVoices();
+      // Speak the text
+      setIsSpeaking(true);
+      utterance.onend = () => setIsSpeaking(false);
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert("Your browser does not support text-to-speech.");
+    }
+  };
 
-//     // Cleanup on unmount or when text changes
-//     return () => {
-//       window.speechSynthesis.cancel(); // Cancel speech if text changes
-//     };
-//   }, [text, languageKey]); // Trigger TTS when text or language changes
-// };
+  const stop = () => {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    }
+  };
 
-// export default useTextToSpeech;
+  return { speak, stop, isSpeaking };
+};
+
+export default useTextToSpeech;
