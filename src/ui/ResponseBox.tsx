@@ -28,7 +28,7 @@ function ResponseBox({ onSubmit, language }: ResponseBoxProps) { // passes the p
         id="response" // label
         value={response} // show input in box
         onChange={handleInputChange}
-        //onChange={(e) => setResponse(e.target.value)} // runs when user types input
+        // onChange={(e) => setResponse(e.target.value)} // runs when user types input
         placeholder={t(language, "enterYourScenarioHere")}
       />
       </div>
