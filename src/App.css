@@ -250,6 +250,10 @@ body {
 .speak-grid-container .speak-grid-item:nth-child(2) {
   justify-self: end;
 }
+
+.speak-grid-container .speak-grid-item:nth-child(5) {
+  justify-content:center;
+}
 /* .speak-grid-container .speak-grid-item:nth-child(4) { */
 .recording-container{
   margin-left: 30%;

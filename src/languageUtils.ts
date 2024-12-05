@@ -14,7 +14,8 @@ const content = {
         teacher: "Teacher",
         student: "Student",
         startRecording: "Start Recording",
-        conversation: "Conversation"
+        conversation: "Conversation",
+        end: "End"
     },
     chinese: {
         enterScenario: "进入场景",
@@ -27,7 +28,8 @@ const content = {
         teacher: "老师",
         student: "学生",
         startRecording: "开始录音",
-        conversation: "对话"
+        conversation: "对话",
+        end: "结束"
     },
     spanish: {
         enterScenario: "Ingresar al escenario",
@@ -40,6 +42,7 @@ const content = {
         teacher: "Maestra",
         student: "Alumna",
         startRecording: "Iniciar grabación",
-        conversation: "Conversación"
+        conversation: "Conversación",
+        end: "Fin"
     }
 }

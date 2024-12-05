@@ -12,6 +12,7 @@ import LogoDesign from './ui/LogoDesign';
 import StartRecording from './ui/StartRecording';
 import UserRole from './ui/UserRole';
 import BeginButton from './ui/BeginButton';
+import EndButton from './ui/EndButton';
 import EnterLanguageDropdown from './ui/EnterLanguageDropdown';
 import useSpeechRecognition from './hooks/useSpeechRecognitionHook';
 import FAQDropdown from './ui/FAQDropdown';
@@ -29,7 +30,11 @@ function App() {
   const [dropOpen, setDropOpen] = useState(false); // Controls the dropdown visibility
   const [dropFAQOpen, setDropFAQOpen] = useState(false); // Controls FAQ dropdown visibility
   const [language, setLanguage] = useState('english'); // Keeps track of the page language
+  const [serverResponded, setServerResponded] = useState(false);
   const { speak, stop, isSpeaking } = useTextToSpeech();
+
+  const [isConversationActive, setIsConversationActive] = useState(true);
+
 
   const {
     text: recognizedText,
@@ -40,7 +45,7 @@ function App() {
     hasRecognitionSupport,
   } = useSpeechRecognition();
   
-  // Mapping for language names to their respective keys
+  // mapping for language names to keys
   const languageMap: { [key: string]: string } = {
     Arabic: 'ar-SA', // Arabic (Saudi Arabia)
     Chinese: 'zh-CN', // Simplified Chinese (China)
@@ -66,28 +71,29 @@ function App() {
     setUserRole(role);
   };
   
-// Define the function with a specific type for the 'language' parameter
+//define language code
 const getLanguageCode = (language: string): string => {
   return languageMap[language] || 'Unknown language';
 };
 
-  // Handles the dropdown toggle for the icon
+  // handles dropdown toggle for the language icon
   const handleIconClick = () => {
     setDropOpen(!dropOpen);
   };
 
-  // Handles the dropdown toggle for FAQs
+  // handles dropdown toggle for FAQs
   const handleFAQClick = () => {
     setDropFAQOpen(!dropFAQOpen);
   };
 
   const handleResponseSubmit = async (userInput: string) => {
+    if (!isConversationActive) return; 
     setIsLoading(true);
     try {
       console.log(userInput);
       console.log("systemrole"+ systemRole);
       console.log("userrole" + userRole);
-      console.log("language"+selectLanguageDropdown)
+      console.log("language" + selectLanguageDropdown)
       const response= await fetch('http://localhost:5000/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
@@ -101,9 +107,9 @@ const getLanguageCode = (language: string): string => {
     });
       const data = await response.json();
       setServerResponse(data.response);
-      
+      setServerResponded(true);
+      setTimeout(() => setServerResponded(false), 2000);
       speak(data.response, getLanguageCode(selectLanguageDropdown));
-      
       setResultWindow(true);
     } catch (error) {
       console.error('API Error:', error);
@@ -113,24 +119,42 @@ const getLanguageCode = (language: string): string => {
     }
   };
 
-  // Handles the language selection from the dropdown
+  //handles the language selection from the dropdown
   const handleLanguageSelect = (language: string) => {
     setLanguage(language); // Updates the page language
     setDropOpen(false); // Closes the dropdown
   };
 
-  // Handles the start/stop of voice recording
+  // // Handles the start/stop of voice recording
+  // const handleBegin = () => {
+  //   if (hasRecognitionSupport) {
+  //     const languageCode = getLanguageCode(selectLanguageDropdown);
+  //     isListening ? stopListening() : startListening(languageCode);
+  //     // isListening ? stopListening() : startListening(selectLanguageDropdown); // Toggles speech recognition
+  //   } else {
+  //     alert('Speech recognition is not supported on this device.'); // Alert for unsupported devices
+  //   }
+  // };
+
   const handleBegin = () => {
     if (hasRecognitionSupport) {
       const languageCode = getLanguageCode(selectLanguageDropdown);
-      isListening ? stopListening() : startListening(languageCode);
-      // isListening ? stopListening() : startListening(selectLanguageDropdown); // Toggles speech recognition
+      // if listening, stop and send the recognized text
+      if (isListening) {
+        stopListening(); // stop listening when the user finishes talking
+        if (recognizedText.trim()) { // check if there is recognized text
+          handleResponseSubmit(recognizedText); // send recognizedText to backend
+        }
+      } else {
+        startListening(languageCode); // Start listening when the user clicks the button
+      }
     } else {
-      alert('Speech recognition is not supported on this device.'); // Alert for unsupported devices
+      alert('Speech recognition is not supported on this device.');
     }
   };
 
-  // Handles the Begin button click to trigger ChatGPT response
+
+  // handles the Begin button click to trigger ChatGPT response
   const handleBeginButtonClick = () => {
     if (userInput.trim()) {
       handleResponseSubmit(userInput);
@@ -139,14 +163,21 @@ const getLanguageCode = (language: string): string => {
     }
   };
 
+//stop convo
+  const handleEndButtonClick = () => {
+    setIsConversationActive(false); // Set conversation to inactive
+    stop(); // Stop speech
+    alert('The conversation has ended.');
+  };
+
   return (
     <div className="App">
       <header className="header">
-        {/* Icon for dropdown menu */}
+        {/* icon for dropdown menu */}
         <div className="icon-container" onClick={handleIconClick}>
           <Icon height={80} width={80} />
         </div>
-        {/* Logo section */}
+        {/* logo section */}
         <div className="logo-design">
           <LogoDesign height={80} width={80} />
           <Logo height={40} width={130} />
@@ -172,7 +203,7 @@ const getLanguageCode = (language: string): string => {
           selectedLanguage={selectLanguageDropdown} 
           language={language}/>
 
-        {/* Conditionally render the ResponseBox or Loading indicator */}
+        {/* conditionally render the ResponseBox or Loading indicator */}
    
           <ResponseBox
               onSubmit={(input) => setUserInput(input)} // Captures user input
@@ -202,10 +233,10 @@ const getLanguageCode = (language: string): string => {
             </div>
           </div>
 
-          {/* Speak grid for microphone, speaker, and recording */}
+          {/* grid for microphone, begin and speaker*/}
           <div className="speak-grid-container">
             <div className="speak-grid-item">
-              <Microphone height={50} width={50} /> 
+              <Microphone height={50} width={50} isActive={serverResponded} /> 
             </div>
             <div className="speak-grid-item">
               <BeginButton onClick={handleBeginButtonClick} text={language} />
@@ -219,7 +250,16 @@ const getLanguageCode = (language: string): string => {
                 language={language}
                 isListening={isListening}
                 />
-                </div>
+            </div>
+
+            <div className="speak-grid-item">
+            </div>
+
+            <div className="speak-grid-item">
+              <EndButton onClick={handleEndButtonClick} text={language}/>
+            </div>
+
+
               </div>
             </>
           )}
