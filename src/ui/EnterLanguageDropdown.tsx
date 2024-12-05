@@ -4,7 +4,7 @@ import { t } from "../languageUtils";
 import { Value } from "sass";
 
 type LanguageProp = {
-  setLanguage: (language: string) => void;
+  setLanguage: (language: string, languageValue: string) => void;
   selectedLanguage: string;
   language: string;
 };
@@ -25,7 +25,7 @@ export default function EnterLanguageDropdown({
     { key: "de", value: "German" },
     { key: "ja", value: "Japanese" },
     { key: "ko", value: "Korean" },
-    { key: "es", value: "Spanish"}
+    { key: "es", value: "Spanish" },
   ];
 
   // function to toggle the dropdown's visibility
@@ -39,8 +39,8 @@ export default function EnterLanguageDropdown({
   };
 
   // function to handle the selection of an option
-  const handleOptionClick = (option: string) => {
-    props.setLanguage(option); // update the selected language in the parent component
+  const handleOptionClick = (option: string, optionValue: string)  => {
+    props.setLanguage(option, optionValue); // update the selected language in the parent component
     setLangDropOpen(false); // close the dropdown after selection
   };
 
@@ -76,7 +76,7 @@ export default function EnterLanguageDropdown({
           {filteredOptions.map((option) => (
             <div
               key={option.key}
-              onClick={() => handleOptionClick(option.key)}
+              onClick={() => handleOptionClick(option.key, option.value)}
               className="enter-language-dropdown-option"
             >
               {option.value}

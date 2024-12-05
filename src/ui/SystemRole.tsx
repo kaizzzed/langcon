@@ -17,7 +17,7 @@ const SystemRole: React.FC<SystemRoleProps> = ({ onSystemRoleChange, language })
 
   return (
     <div className="input-container">
-      <label htmlFor="system-role">S{t(language, "systemRole")}</label>
+      <label htmlFor="system-role">{t(language, "systemRole")}</label>
       <input
         id="system-role"
         type="text"
