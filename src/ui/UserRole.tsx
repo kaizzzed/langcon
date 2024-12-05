@@ -4,22 +4,22 @@ import { t } from '../languageUtils';
 interface UserRoleProps {
   onUserRoleChange: (newRole: string) => void;
   language: string;
-  isResultWindow: boolean; // Prop to control whether the input should be disabled
-  userRole: string; // Prop to pass the current role from the parent component
+  isResultWindow: boolean; // prop that disable typing in the boxes
+  userRole: string; // prop to keep the inputed role in the box even after submitting
 }
 
 const UserRole: React.FC<UserRoleProps> = ({ onUserRoleChange, language, isResultWindow, userRole }) => {
-  const [role, setRole] = useState(userRole); // Initialize state with the current role
+  const [role, setRole] = useState(userRole); // initialize state with the current role
 
-  // This ensures that the role state is updated when the parent component changes the role
+  //ensures the role is updated when the input changes
   useEffect(() => {
     setRole(userRole);
   }, [userRole]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newRole = event.target.value;
-    setRole(newRole); // Update local state
-    onUserRoleChange(newRole); // Pass updated role to the parent component
+    setRole(newRole); // update local state
+    onUserRoleChange(newRole); //pass updated role to the parent component
   };
 
   return (
@@ -31,7 +31,7 @@ const UserRole: React.FC<UserRoleProps> = ({ onUserRoleChange, language, isResul
         placeholder={`e.g. ${t(language, "student")}`}
         value={role}
         onChange={handleChange}
-        readOnly={isResultWindow} // Prevent changing input value when result window is active
+        readOnly={isResultWindow} // prevent changing input value when result window is active
       />
     </div>
   );
