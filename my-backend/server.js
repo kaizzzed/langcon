@@ -127,8 +127,8 @@ translateApp.use(bodyParser.json());
 translateApp.use(cors());
 
 // Port numbers
-const CHAT_API_PORT = process.env.CHAT_API_PORT || 5000;
-const TRANSLATE_API_PORT = process.env.TRANSLATE_API_PORT || 5001;
+const CHAT_API_PORT = process.env.CHAT_API_PORT || 5002;
+const TRANSLATE_API_PORT = process.env.TRANSLATE_API_PORT || 5003;
 
 // Environment Variables
 const apiKey = process.env.OPENAI_API_KEY;

@@ -9,15 +9,15 @@ export default function FAQDropdown({ language }: FaqProp) {
   const faqItems = [
     {
       question: "What is this app about?",
-      answer: "1",
+      answer: "This app is a tool for users to practice conversing in a foreign language and recieve personalized feedback.",
     },
     {
-      question: "How do I select a language?",
-      answer: "Click on the globe icon or the dropdown to choose a language.",
+      question: "How do I change the page language??",
+      answer: "Click on the globe icon and select your preferred language.",
     },
     {
-      question: "3?",
-      answer: "3",
+      question: "Quickstart:",
+      answer: "Select a language you want to speak in, put in a prompt/situation for the conversation, put in the roles for the user and system, then click begin. When it's your turn to speak, click the green button to turn on your mic, then click it again to turn it off after speaking.",
     },
   ];
 

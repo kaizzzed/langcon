@@ -5,7 +5,7 @@ module.exports = function (app) {
   app.use(
     '/translate',
     createProxyMiddleware({
-      target: 'http://localhost:5001',
+      target: 'http://localhost:5003',
       changeOrigin: true,
     })
   );
@@ -14,7 +14,7 @@ module.exports = function (app) {
   app.use(
     '/api/chat',
     createProxyMiddleware({
-      target: 'http://localhost:5000',
+      target: 'http://localhost:5002',
       changeOrigin: true,
     })
   );
